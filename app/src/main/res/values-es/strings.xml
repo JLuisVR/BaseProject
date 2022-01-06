@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="add">Añadir</string>
+    <string name="user_list_title">Lista de usuarios</string>
+    <string name="user_detail_title">Detalle</string>
+    <string name="empty_user_msg">No hay usuarios. Añade nuevos usuarios</string>
+    <string name="error_get_user_list">Error al intentar obtener los usuarios</string>
+    <string name="name">Nombre</string>
+    <string name="delete">Borrar</string>
+    <string name="save">Guardar</string>
+    <string name="error_get_user_detail">Error al intentar obtener los detalle del usuario</string>
+    <string name="user_delete_msg">El usuario fue eliminado</string>
+    <string name="user_save_msg">El usuario fue guardado</string>
+</resources>
