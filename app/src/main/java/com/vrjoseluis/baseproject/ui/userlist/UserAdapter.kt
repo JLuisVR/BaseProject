@@ -14,13 +14,16 @@ class UserAdapter(
     private val itemClickListener: OnItemClickListener
 ) : ListAdapter<User, UserViewHolder>(DiffCallback()) {
 
+    companion object{
+        private const val BIRTHDATE_FORMAT = "dd/MM/YYYY"
+    }
     private class DiffCallback : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
-            return oldItem == newItem
+            return oldItem.name == newItem.name && oldItem.birthdate?.toString(BIRTHDATE_FORMAT) ==  newItem.birthdate?.toString(BIRTHDATE_FORMAT)
         }
     }
 
@@ -36,7 +39,7 @@ class UserAdapter(
     inner class UserViewHolder(private val binding: RowUserBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: User, clickListener: OnItemClickListener) {
             binding.rowUserLabelName.text = item.name
-            binding.rowUserLabelBirthdate.text = item.birthdate?.toString("dd/MM/YYYY")
+            binding.rowUserLabelBirthdate.text = item.birthdate?.toString(BIRTHDATE_FORMAT)
             itemView.setOnClickListener { clickListener.onItemClick(adapterPosition, item) }
         }
     }

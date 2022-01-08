@@ -6,9 +6,14 @@
     <string name="empty_user_msg">There are no users. Add new users</string>
     <string name="error_get_user_list">Error trying to get users</string>
     <string name="name">Name</string>
+    <string name="birthdate">Birthdate</string>
+    <string name="birthdate_format" translatable="false">dd/mm/yyyy</string>
+    <string name="mandatory_field">Mandatory field</string>
+    <string name="invalid_format">Invalid format</string>
     <string name="delete">Delete</string>
     <string name="save">Save</string>
     <string name="error_get_user_detail">Error trying to get user detail</string>
     <string name="user_delete_msg">User has been deleted</string>
     <string name="user_save_msg">User has been saved</string>
+    <string name="search">Search</string>
 </resources>

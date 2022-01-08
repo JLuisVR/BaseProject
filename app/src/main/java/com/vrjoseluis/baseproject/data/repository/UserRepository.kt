@@ -4,6 +4,7 @@ import com.vrjoseluis.baseproject.data.local.UserLocalDataSource
 import com.vrjoseluis.baseproject.data.model.User
 import com.vrjoseluis.baseproject.data.remote.UserRemoteDataSource
 import com.vrjoseluis.baseproject.data.repository.utils.CacheableRemoteResponse
+import com.vrjoseluis.baseproject.data.repository.utils.LocalResponse
 import com.vrjoseluis.baseproject.data.repository.utils.RemoteResponse
 import com.vrjoseluis.baseproject.data.repository.utils.RepositoryResponse
 import javax.inject.Inject
@@ -14,6 +15,7 @@ interface UserRepository {
     suspend fun saveUser(user: User): RepositoryResponse<Unit>
     suspend fun updateUser(user: User): RepositoryResponse<Unit>
     suspend fun deleteUser(userId: Int): RepositoryResponse<Unit>
+    suspend fun getUserListFilterByName(name: String?): RepositoryResponse<List<User>>
 }
 
 internal class UserRepositoryImpl @Inject constructor(
@@ -36,6 +38,7 @@ internal class UserRepositoryImpl @Inject constructor(
             }
 
             override suspend fun saveRemoteResponse(remoteResponse: List<User>) {
+                local.removeAllUser()
                 local.saveUserList(remoteResponse)
             }
         }.build()
@@ -87,4 +90,13 @@ internal class UserRepositoryImpl @Inject constructor(
             }
         }.build()
     }
+
+    override suspend fun getUserListFilterByName(name: String?): RepositoryResponse<List<User>> {
+        return object : LocalResponse<List<User>>() {
+            override suspend fun loadFromLocal(): List<User> {
+                return local.getUserListByName(name)
+            }
+        }.build()
+    }
+
 }

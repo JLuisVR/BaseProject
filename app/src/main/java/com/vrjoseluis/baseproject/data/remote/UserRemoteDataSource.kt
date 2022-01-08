@@ -17,7 +17,7 @@ class UserRemoteDataSourceImpl(
 ) : UserRemoteDataSource {
 
     override suspend fun getAllUsers() = RemoteErrorManagement.wrap {
-        userService.getAllUsers().map { it.toBo() }
+        userService.getAllUsers().map { it.toBo() }.sortedBy { it.name }
     }
 
     override suspend fun getUserById(id:Int) = RemoteErrorManagement.wrap {

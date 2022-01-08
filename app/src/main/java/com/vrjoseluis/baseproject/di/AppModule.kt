@@ -17,6 +17,8 @@ import com.vrjoseluis.baseproject.ui.userdetail.usecase.*
 import com.vrjoseluis.baseproject.ui.userdetail.usecase.DeleteUserUserCaseImpl
 import com.vrjoseluis.baseproject.ui.userdetail.usecase.GetUserByIdUseCaseImpl
 import com.vrjoseluis.baseproject.ui.userdetail.usecase.SaveOrUpdateUserUseCaseImpl
+import com.vrjoseluis.baseproject.ui.userlist.usecase.GetUserListByNameUseCase
+import com.vrjoseluis.baseproject.ui.userlist.usecase.GetUserListByNameUseCaseImpl
 import com.vrjoseluis.baseproject.ui.userlist.usecase.GetUserListUseCase
 import com.vrjoseluis.baseproject.ui.userlist.usecase.GetUserListUseCaseImpl
 import dagger.Module
@@ -109,4 +111,8 @@ object AppModule {
     @Provides
     fun getDeleteUserUserUseCaseProvider(repository: UserRepository) =
         DeleteUserUserCaseImpl(repository) as DeleteUserUseCase
+
+    @Provides
+    fun getUserListByNameUseCaseProvider(repository: UserRepository) =
+        GetUserListByNameUseCaseImpl(repository) as GetUserListByNameUseCase
 }

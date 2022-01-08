@@ -6,9 +6,13 @@
     <string name="empty_user_msg">No hay usuarios. Añade nuevos usuarios</string>
     <string name="error_get_user_list">Error al intentar obtener los usuarios</string>
     <string name="name">Nombre</string>
+    <string name="birthdate">Fecha de nacimiento</string>
+    <string name="mandatory_field">Campo obligatorio</string>
+    <string name="invalid_format">Formato invalido</string>
     <string name="delete">Borrar</string>
     <string name="save">Guardar</string>
     <string name="error_get_user_detail">Error al intentar obtener los detalle del usuario</string>
     <string name="user_delete_msg">El usuario fue eliminado</string>
     <string name="user_save_msg">El usuario fue guardado</string>
+    <string name="search">Buscar</string>
 </resources>

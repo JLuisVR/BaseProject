@@ -5,6 +5,7 @@ import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.vrjoseluis.baseproject.data.model.User
 import com.vrjoseluis.baseproject.data.repository.utils.AsyncResult
+import com.vrjoseluis.baseproject.ui.userlist.usecase.GetUserListByNameUseCase
 import com.vrjoseluis.baseproject.ui.userlist.usecase.GetUserListUseCase
 import com.vrjoseluis.baseproject.util.MutableSourceLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserListViewModel @Inject constructor(
-    private val getUserListUseCase: GetUserListUseCase
+    private val getUserListUseCase: GetUserListUseCase,
+    private val getUserListByNameUseCase: GetUserListByNameUseCase
 ) : ViewModel() {
 
     private val userListLiveData = MutableSourceLiveData<AsyncResult<List<User>>>()
@@ -24,6 +26,12 @@ class UserListViewModel @Inject constructor(
     fun requestCharacterList() {
         viewModelScope.launch(Dispatchers.IO) {
             userListLiveData.changeSource(getUserListUseCase().asLiveData(coroutineContext))
+        }
+    }
+
+    fun filterUserListByName(name:String?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            userListLiveData.changeSource(getUserListByNameUseCase(name).asLiveData(coroutineContext))
         }
     }
 }
